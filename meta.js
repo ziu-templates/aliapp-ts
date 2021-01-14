@@ -14,7 +14,7 @@ module.exports = {
       type: 'string',
       required: false,
       message: 'Project description',
-      default: 'A weapp(微信小程序) project with ziu',
+      default: 'A aliapp(支付宝小程序) project with ziu',
     },
     author: {
       type: 'string',
@@ -33,6 +33,7 @@ module.exports = {
       type: 'list',
       message: 'Pick an ESLint preset',
       choices: [
+        // },
         {
           name: 'Airbnb (https://github.com/airbnb/javascript)',
           value: 'airbnb',
