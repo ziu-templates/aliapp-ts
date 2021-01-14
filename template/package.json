@@ -1,0 +1,116 @@
+{
+    "name": "{{ name }}",
+    "version": "1.0.0",
+    "description": "{{ description }}",
+    "author": "{{ author }}",
+    "private": true,
+    "scripts": {
+        "start": "npm run dev",
+        "fix:scss": "npm run lint:scss -- --fix",
+        "lint": "eslint --ext .ts --ext .tsx src -c .eslintrc.js",
+        "lint:scss": "stylelint src/**/*.scss --config .stylelintrc",
+        "api": "mipp-api src/**/*/apiList.ts -o src/typings/Api/index.d.ts",
+        {{#gitCommitMsg}}
+        "husky": "node node_modules/husky/lib/installer/bin install",
+        "unhusky": "node node_modules/husky/lib/installer/bin uninstall",
+        {{/gitCommitMsg}}
+        {{#performance}}
+        "commit": "git-cz",
+        {{/performance}}
+        {{#changelog}}
+        "cl": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1000",
+        "postversion": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2 && git add CHANGELOG.md package.json && git add -u",
+        {{/changelog}}
+        "dev": "node scripts/bin/dev.js",
+        "build": "node scripts/bin/ziuServer.js",
+        "staging": "npm run build -- staging",
+        "testing": "npm run build -- testing",
+        "report": "npm run build -- production -r"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.3.4",
+        "@babel/plugin-transform-runtime": "^7.3.4",
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
+        "@babel/plugin-transform-regenerator": "^7.4.5",
+        "@babel/plugin-transform-strict-mode": "^7.2.0",
+        "babel-plugin-transform-undefined-to-void-fn": "^1.0.1",
+        "@babel/preset-env": "^7.3.4",
+        "@typescript-eslint/eslint-plugin": "^2.27.0",
+        "@typescript-eslint/parser": "^2.27.0",
+        "babel-loader": "^8.0.5",
+        "babel-eslint": "^10.0.2",
+        "babel-preset-minify": "^0.5.0",
+        "copy-webpack-plugin": "^5.0.1",
+        "cp": "^0.2.0",
+        "css-loader": "^2.1.1",
+        "cssnano": "^4.1.10",
+        "cssnano-preset-miniapp": "^1.0.5",
+        {{#lint}}
+        "eslint": "^5.15.3",
+        "eslint-friendly-formatter": "^4.0.1",
+        "eslint-loader": "^2.1.2",
+        "eslint-plugin-import": "^2.16.0",
+        "eslint-config-ziu": "^1.1.1",
+        {{#if_eq lintConfig "standard"}}
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-promise": "^3.4.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "eslint-plugin-node": "^5.2.0",
+        {{/if_eq}}
+        {{#if_eq lintConfig "airbnb"}}
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-plugin-jsx-a11y": "^6.2.1",
+        "eslint-plugin-react": "^7.12.4",
+        {{/if_eq}}
+        {{/lint}}
+        "file-loader": "^3.0.1",
+        "friendly-errors-webpack-plugin": "^1.7.0",
+        "mini-css-extract-plugin": "^0.5.0",
+        "mini-js-loader": "^1.2.2",
+        "mini-json-loader": "^1.0.0",
+        "mini-xml-loader": "^1.4.6",
+        "merge": "^1.2.1",
+        "glob": "^7.1.4",
+        "gulp": "^4.0.0",
+        "lodash": "^4.17.11",
+        "miniapp-auto-webpack-plugin": "^3.4.3",
+        "mini-function-plugin": "^1.0.4",
+        "minimist": "^1.2.0",
+        "node-notifier": "^5.4.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "node-sass": "^4.11.0",
+        "ora": "^1.4.0",
+        "sass-loader": "^7.1.0",
+        "lodash.merge": "^4.6.2",
+        {{#gitCommitMsg}}
+        "husky": "^1.3.1",
+        "commitlint": "^11.0.0",
+        {{/gitCommitMsg}}
+        "stylelint": "^9.10.1",
+        "stylelint-config-ziu": "^1.0.12",
+        "stylelint-webpack-plugin": "^2.1.1",
+        "terser-webpack-plugin": "^1.2.3",
+        "url-loader": "^1.1.2",
+        {{#performance}}
+        "conventional-changelog-cli": "^2.0.31",
+        "git-cz": "^3.3.0",
+        {{/performance}}
+        "webpack": "^4.29.6",
+        "yaml": "^1.6.0",
+        "ts-loader": "^6.2.2",
+        "typescript": "^3.8.3",
+        "mipp-api-typing": "^1.0.13",
+        "fork-ts-checker-webpack-plugin": "^4.1.3",
+        "webpack-bundle-analyzer": "^3.3.2"
+    },
+    "engines": {
+        "node": ">= 8.0.0",
+        "npm": ">= 3.0.0"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.3.4",
+        "@babel/runtime-corejs2": "^7.5.0",
+        "miniapp-utils": "^1.2.3",
+        "mipp-ali": "^1.1.2"
+    }
+}

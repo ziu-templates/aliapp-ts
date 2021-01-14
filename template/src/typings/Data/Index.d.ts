@@ -1,0 +1,3 @@
+interface IIndexData {
+  welcomeStr: string;
+}

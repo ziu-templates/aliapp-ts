@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "ES6",
+      "ES7",
+      "ES2016",
+      "ES2017",
+      "ESNext"
+    ],
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "target": "es5",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitThis": true,
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules",
+    "src/**/*.wxs"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}

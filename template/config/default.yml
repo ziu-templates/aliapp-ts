@@ -1,0 +1,3 @@
+# 默认环境变量
+APP_TITLE: {{ name }}
+PRJ_ENV: production
