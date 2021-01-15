@@ -54,6 +54,7 @@ module.exports = function(suffix) {
           filename: `[name].${suffix}`,
           minimize: envComp('production'),
           undefinedToVoid,
+          isUnicode2Char: false,
         },
       },
     ],
